@@ -41,6 +41,12 @@
             border-radius: 50%;
             padding: 8px;
         }
+        .mobile-menu {
+            display: none;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -50,7 +56,7 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3">
                     <!-- SkillBridge Logo SVG -->
-                    <svg width="48" height="48" viewBox="0 0 200 200" class="logo-badge">
+                    <svg width="48" height="48" viewBox="0 0 200 200" class="logo-badge" aria-label="SkillBridge logo">
                         <circle cx="100" cy="100" r="90" fill="#1B5E7E"/>
                         <!-- Auckland Skyline -->
                         <rect x="30" y="120" width="15" height="40" fill="#2C5F2D" opacity="0.6"/>
@@ -91,11 +97,18 @@
                     <a href="#cta" class="bg-coral-accent text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-all">Get Notified</a>
                 </div>
                 <!-- Mobile menu button -->
-                <button class="md:hidden text-charcoal" onclick="toggleMenu()">
+                <button class="md:hidden text-charcoal" onclick="toggleMenu()" aria-label="Toggle menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden pb-4">
+                <a href="#how-it-works" class="block py-2 text-charcoal hover:text-teal-primary">How It Works</a>
+                <a href="#pricing" class="block py-2 text-charcoal hover:text-teal-primary">Pricing</a>
+                <a href="#research" class="block py-2 text-charcoal hover:text-teal-primary">Research</a>
+                <a href="#cta" class="block py-2 text-charcoal hover:text-teal-primary">Get Notified</a>
             </div>
         </div>
     </nav>
@@ -104,7 +117,7 @@
     <section class="gradient-bg pt-32 pb-20 px-4">
         <div class="max-w-6xl mx-auto text-center">
             <!-- Large SkillBridge Logo -->
-            <svg width="160" height="160" viewBox="0 0 200 200" class="mx-auto mb-8 logo-badge shadow-2xl">
+            <svg width="160" height="160" viewBox="0 0 200 200" class="mx-auto mb-8 logo-badge shadow-2xl" aria-label="SkillBridge logo large">
                 <circle cx="100" cy="100" r="90" fill="#1B5E7E"/>
                 <rect x="30" y="120" width="15" height="40" fill="#2C5F2D" opacity="0.6"/>
                 <rect x="50" y="110" width="20" height="50" fill="#2C5F2D" opacity="0.7"/>
@@ -201,7 +214,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="text-center">
                     <div class="bg-teal-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Check icon">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
@@ -210,7 +223,7 @@
                 </div>
                 <div class="text-center">
                     <div class="bg-teal-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="People icon">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
@@ -219,7 +232,7 @@
                 </div>
                 <div class="text-center">
                     <div class="bg-teal-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Shield icon">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
@@ -289,25 +302,25 @@
                     <div class="h-px bg-gray-200 mb-6"></div>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Create profile</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">AI skill matching</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">5 matches per month</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Basic employer info</span>
@@ -344,43 +357,43 @@
                     <div class="h-px bg-gray-200 mb-6"></div>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-forest mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Everything in Free</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Unlimited matches</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Full employer details</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Priority placement</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Guaranteed interviews</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">1-on-1 success coaching</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-6 h-6 text-coral-accent mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700 font-semibold">Resume review</span>
@@ -465,6 +478,7 @@
                     placeholder="Enter your email address" 
                     class="flex-1 px-6 py-4 rounded-lg text-charcoal text-lg focus:outline-none focus:ring-4 focus:ring-white/50"
                     required
+                    aria-label="Email address"
                 >
                 <button 
                     type="submit" 
@@ -483,16 +497,32 @@
     <footer class="py-12 px-4 bg-charcoal text-white/70">
         <div class="max-w-6xl mx-auto text-center">
             <div class="flex items-center justify-center space-x-3 mb-4">
-                <svg width="40" height="40" viewBox="0 0 200 200" class="logo-badge">
+                <svg width="40" height="40" viewBox="0 0 200 200" class="logo-badge" aria-label="SkillBridge footer logo">
                     <circle cx="100" cy="100" r="90" fill="#1B5E7E"/>
                     <rect x="30" y="120" width="15" height="40" fill="#2C5F2D" opacity="0.6"/>
                     <rect x="50" y="110" width="20" height="50" fill="#2C5F2D" opacity="0.7"/>
+                    <rect x="75" y="100" width="12" height="60" fill="#2C5F2D" opacity="0.5"/>
                     <rect x="92" y="70" width="16" height="90" fill="#F5F5F5"/>
                     <rect x="95" y="50" width="10" height="20" fill="#F5F5F5"/>
                     <circle cx="100" cy="45" r="8" fill="#F96167"/>
+                    <rect x="115" y="105" width="18" height="55" fill="#2C5F2D" opacity="0.6"/>
+                    <rect x="138" y="115" width="14" height="45" fill="#2C5F2D" opacity="0.7"/>
+                    <rect x="157" y="125" width="13" height="35" fill="#2C5F2D" opacity="0.5"/>
                     <path d="M 40 120 Q 100 100 160 120" stroke="white" stroke-width="6" fill="none"/>
+                    <line x1="40" y1="120" x2="40" y2="140" stroke="white" stroke-width="3"/>
+                    <line x1="160" y1="120" x2="160" y2="140" stroke="white" stroke-width="3"/>
+                    <g opacity="0.8">
+                        <circle cx="75" cy="108" r="3" fill="white"/>
+                        <line x1="75" y1="111" x2="75" y2="118" stroke="white" stroke-width="2"/>
+                        <circle cx="100" cy="105" r="3" fill="white"/>
+                        <line x1="100" y1="108" x2="100" y2="115" stroke="white" stroke-width="2"/>
+                        <circle cx="125" cy="108" r="3" fill="white"/>
+                        <line x1="125" y1="111" x2="125" y2="118" stroke="white" stroke-width="2"/>
+                    </g>
                     <line x1="20" y1="160" x2="180" y2="160" stroke="white" stroke-width="3"/>
                     <path d="M 100 170 L 95 185 L 105 185 Z" fill="white"/>
+                    <path d="M 100 170 L 90 178 L 100 180 Z" fill="white" opacity="0.7"/>
+                    <path d="M 100 170 L 110 178 L 100 180 Z" fill="white" opacity="0.7"/>
                 </svg>
                 <span class="text-xl font-bold text-white">SkillBridge</span>
             </div>
@@ -513,12 +543,14 @@
 
     <script>
         function toggleMenu() {
-            alert('Mobile menu - add full navigation here');
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
         }
 
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you for your interest! We\'ll notify you when SkillBridge launches in Q2 2026.');
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`Thank you for your interest, ${email}! We'll notify you when SkillBridge launches in Q2 2026.`);
             e.target.reset();
         }
 
@@ -529,6 +561,13 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            });
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('active');
             });
         });
     </script>
